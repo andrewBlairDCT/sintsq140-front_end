@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) front end bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+Clone and pull the repo.
 
 ## Getting Started
 
@@ -16,21 +18,28 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## AWS Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create an S3 bucket, and in the Permissions tab paste this into the CORS tab.
+```
+[
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["PUT", "POST", "GET", "DELETE"],
+    "AllowedOrigins": ["*"], 
+    "ExposeHeaders": ["ETag"]
+  }
+]
+```
+In the repo, you will need to create a .env file with the following information in it*:
+```
+NEXT_PUBLIC_AWS_REGION="eu-west-1"
+NEXT_PUBLIC_AWS_BUCKET_NAME="new_bucket_name"
+NEXT_PUBLIC_AWS_ACCESS_KEY_ID="AWS IAM user access key id"
+NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY="AWS IAM user access key"
+```
 
-## Learn More
+*The IAMS User account will need to have S3:Put permissions, which should be included as part of Administrator Access.
 
-To learn more about Next.js, take a look at the following resources:
+Now you should be able to upload csv files to the S3 bucket.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
