@@ -57,9 +57,17 @@ const Home = () => {
 
         return s3.send(uploadCommand);
       });
-
+      
       await Promise.all(uploadPromises);
-      alert("Files uploaded successfully!");
+
+      const fileNames = files.map((file) => file.name).join('\n');
+
+      alert(`Files uploaded successfully!
+      
+      File names:
+      ${fileNames}
+      `);
+
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
