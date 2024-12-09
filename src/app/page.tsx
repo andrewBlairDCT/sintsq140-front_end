@@ -3,6 +3,7 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { Fragment, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
+import styles from './page.module.css';
 
 const Home = () => {
   const [files, setFiles] = useState<File[]>([]);
@@ -69,19 +70,11 @@ const Home = () => {
     }
   };
 
-  const buttonStyling = {
-    zIndex: 12,
-    position: "relative",
-    border: "solid 1px white",
-    padding: 5,
-    backgroundColor: "grey",
-    margin: 5,
-  };
-
   return (
     <Fragment>
-      <div>
-        <div>
+      <div className={styles.container}>
+        <div className={styles.buttonContainer}>
+          <h1>UPLOAD CSV FILES</h1>
           <p>Acceptable file format: .csv</p>
           <div>
             <input
@@ -94,7 +87,7 @@ const Home = () => {
             />
           </div>
           <div>
-            <button style={buttonStyling} onClick={handleUploadS3}>
+            <button className={styles.buttonStyling} onClick={handleUploadS3}>
               S3 Upload
             </button>
           </div>

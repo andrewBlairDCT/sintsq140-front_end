@@ -1,13 +1,6 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
+.container {
+  background: rgb(22,89,53);
+  background: linear-gradient(180deg, rgba(22,89,53,1) 0%, rgba(15,119,65,1) 35%, rgba(49,191,125,1) 100%);
   align-items: center;
   justify-items: center;
   min-height: 100svh;
@@ -16,8 +9,29 @@
   font-family: var(--font-geist-sans);
 }
 
+.buttonContainer {
+  z-index: 12;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: rgb(18, 67, 40, 0.4);
+}
+
+.buttonContainer > p {
+  color: white;
+  padding: 5px;
+}
+
+.buttonStyling {
+  position: relative;
+  border: solid 1px rgb(0, 0, 0);
+  border-radius: 5px;
+  padding: 5px;
+  background-color: lightgreen;
+  margin: 5px;
+};
+
 @media (prefers-color-scheme: dark) {
-  .page {
+  .Fragment {
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
